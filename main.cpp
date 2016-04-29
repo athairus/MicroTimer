@@ -7,7 +7,6 @@
 
 #include "microtimer.h"
 #include "timelistener.h"
-#include "testitem.h"
 
 int main( int argc, char *argv[] ) {
     QGuiApplication app( argc, argv );
@@ -18,6 +17,10 @@ int main( int argc, char *argv[] ) {
 
     QThread listenerThread;
     QThread microTimerThread;
+
+    QThread::currentThread()->setObjectName( "Main thread" );
+    listenerThread.setObjectName( "Listener thread" );
+    microTimerThread.setObjectName( "Timer thread" );
 
     // Cleanly quit threads once app is closed
     QObject::connect( &app, &QCoreApplication::aboutToQuit, [ & ]() {
@@ -55,7 +58,6 @@ int main( int argc, char *argv[] ) {
 
     QQmlApplicationEngine engine;
 
-    qmlRegisterType<TestItem>( "test", 1, 0, "TestItem" );
     engine.load( QUrl( QStringLiteral( "qrc:/main.qml" ) ) );
 
     return app.exec();

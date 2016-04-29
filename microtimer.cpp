@@ -21,6 +21,7 @@
 
 #include <QDebug>
 #include <QEvent>
+#include <QThread>
 
 MicroTimer::MicroTimer( QObject *parent ) : QObject( parent ) {
     timer.invalidate();
@@ -50,7 +51,7 @@ bool MicroTimer::event( QEvent *e ) {
             }
 
             if( counter > 1 ) {
-                qWarning().nospace() << "Skipped a timeout (" << counter - 1 << ")!";
+                qWarning().nospace() << "Skipped " << counter - 1 << " frame(s)! " << QThread::currentThread();
                 emit missedTimeouts( counter - 1 );
             }
 

@@ -42,15 +42,14 @@
     # Include libraries
     # INCLUDEPATH += /path/to/include
 
-    SOURCES += main.cpp \
-    timelistener.cpp \
+    SOURCES += \
+    main.cpp \
     microtimer.cpp \
-    testitem.cpp
+    timelistener.cpp \
 
     HEADERS += \
-    timelistener.h \
     microtimer.h \
-    testitem.h
+    timelistener.h
 
     RESOURCES += qml.qrc
 

@@ -26,11 +26,6 @@ Window {
         }
     }
 
-    TestItem {
-        id: testItem;
-        anchors.fill: parent;
-    }
-
     Text {
         text: qsTr( "Click this window over and over and watch the timer's accuracy drop..." );
         color: "white";
