@@ -44,11 +44,13 @@
 
     SOURCES += main.cpp \
     timelistener.cpp \
-    microtimer.cpp
+    microtimer.cpp \
+    testitem.cpp
 
     HEADERS += \
     timelistener.h \
-    microtimer.h
+    microtimer.h \
+    testitem.h
 
     RESOURCES += qml.qrc
 

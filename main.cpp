@@ -1,17 +1,16 @@
 #include <QGuiApplication>
 #include <QObject>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include <QThread>
 #include <QTimer>
 
 #include "microtimer.h"
 #include "timelistener.h"
+#include "testitem.h"
 
 int main( int argc, char *argv[] ) {
     QGuiApplication app( argc, argv );
-
-    QQmlApplicationEngine engine;
-    engine.load( QUrl( QStringLiteral( "qrc:/main.qml" ) ) );
 
     // Testing showed signals started to drop in OS X 10.11 beyond 400Hz
     qreal freq = 60.0 * 1000.0 / 1001.0; // ~59.94 (NTSC)
@@ -53,6 +52,11 @@ int main( int argc, char *argv[] ) {
     microTimer.moveToThread( &microTimerThread );
     listenerThread.start();
     microTimerThread.start();
+
+    QQmlApplicationEngine engine;
+
+    qmlRegisterType<TestItem>( "test", 1, 0, "TestItem" );
+    engine.load( QUrl( QStringLiteral( "qrc:/main.qml" ) ) );
 
     return app.exec();
 }
