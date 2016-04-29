@@ -4,6 +4,7 @@ import QtQuick.Window 2.2
 Window {
     id: window;
     visible: true;
+    color: "#202020";
 
     // Component.onCompleted: flags = flags | Qt.WindowFullscreenButtonHint;
 
