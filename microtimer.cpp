@@ -50,7 +50,7 @@ bool MicroTimer::event( QEvent *e ) {
             }
 
             if( counter > 1 ) {
-                // qWarning().nospace() << "Skipped a timeout (" << counter - 1 << ")!";
+                qWarning().nospace() << "Skipped a timeout (" << counter - 1 << ")!";
                 emit missedTimeouts( counter - 1 );
             }
 
